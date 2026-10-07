@@ -1,0 +1,30 @@
+# 小爱同学 × Hermes Agent × Home Assistant 接入教程
+
+> 用「小爱音箱」当语音入口，让跑在云端的 Hermes Agent 读/控家里的 Home Assistant 设备（米家 / 海尔）。
+> 本教程面向**想自己搭一套的人**，也面向**读它的 AI** —— 每篇都是自包含的，命令可直接复制。
+
+## Docs
+
+- [00 资源与下载链接](docs/00-resources.md): 所有要装的软件、镜像加速、本教程的下载方式
+- [01 架构与网络选型](docs/01-architecture.md): 拓扑、Tailscale / frp / 端口映射怎么选、CGNAT 判断
+- [02 部署 Home Assistant](docs/02-home-assistant.md): WSL2 403 绕过、Docker 镜像加速、米家 + 海尔接入
+- [03 云端 Hermes 接入 HA](docs/03-hermes-ha.md): 插件、.env、ha_* 工具、uv 报错根因链、备份目录规律
+- [04 开放 OpenAI 兼容 API](docs/04-hermes-api-server.md): 端点表、绑 Tailscale IP、自测、鉴权 401 根因
+- [05 MiGPT 语音入口](docs/05-migpt-xiaoai.md): 镜像/端口纠错、数字 did、passToken、事件帧崩溃补丁
+- [06 提速：精简工具集](docs/06-performance.md): token/耗时实测、38→7 个工具、不要开 terminal
+- [07 会话记忆与压缩](docs/07-session-memory.md): 两种"记忆"的区别、X-Hermes-Session-Id、compression
+- [08 踩坑总表](docs/08-troubleshooting.md): 症状 → 原因 → 解法（汇总全部坑）
+- [09 设备实体参考](docs/09-entity-reference.md): 米家/海尔实体 ID 规律、三个必须记住的陷阱
+
+## Optional
+
+- [scripts/](scripts/README.md): Windows 侧部署与守护脚本（PowerShell + Node），含逐脚本清单
+- [tutorial-full.md](tutorial-full.md): 单文件全本（推荐直接喂给 AI，或离线阅读）
+- [README.md](README.md): 项目总览、当前状态、快速开始
+- [LICENSE](LICENSE): MIT
+
+## Important
+
+本教程记录的链路**只有一半打通**：HA 接入、Tailscale 打通、ha_* 工具可用均已完成；
+但 Hermes API Server 的鉴权存在未解决的 401，**小爱/MiGPT 语音入口从未真正打通并已放弃**。
+细节见 [04 篇 §4.9](docs/04-hermes-api-server.md) 与 README 的「现状」一节。

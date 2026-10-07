@@ -1,0 +1,16 @@
+# 密钥与本地配置 —— 绝不入库
+.env
+.env.*
+!.env.example
+
+# 备份文件
+*.bak
+*.bak.*
+*~
+
+# 日志
+*.log
+
+# 系统文件
+.DS_Store
+Thumbs.db
